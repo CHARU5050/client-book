@@ -36,7 +36,7 @@ const Register=()=>{
         }
     
         try {
-            await axios.post("http://localhost:3001/register", inputs);
+            await axios.post("/register", inputs);
             navigate('/login');
         } catch (err) {
             seterror(err.response.data);
