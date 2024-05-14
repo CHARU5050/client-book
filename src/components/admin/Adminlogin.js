@@ -27,6 +27,9 @@ const Adminlogin = () => {
         } catch (err) {
             console.log(err);
         }
+        if(inputs.username==="admin" && inputs.password==="123"){
+            navigate('/admin_page');
+        }
     }
 
     return (
