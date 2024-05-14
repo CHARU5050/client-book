@@ -13,14 +13,7 @@ const Adminpage = () => {
     const {admin_details,adminlogout}=useContext(AuthContext);
     const navigate=useNavigate();
 
-    useEffect(()=>{
-        if(!admin_details){
-            navigate('/adminlogin');
-        }
-        
-        console.log(admin_details);
-     
-    },[])
+
     
     const handleLogout= async()=>{
         await adminlogout();
