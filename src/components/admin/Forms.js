@@ -39,7 +39,7 @@ const Forms = () => {
 
   const gethomepage = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/gethomepage');
+      const response = await axios.get('/gethomepage');
 
       sethome(response.data);
     } catch (error) {
@@ -51,7 +51,7 @@ const Forms = () => {
 
   const getfeature = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/getfeature');
+      const response = await axios.get('/getfeature');
       setfeatures(response.data);
     } catch (error) {
       console.error(error);
@@ -59,7 +59,7 @@ const Forms = () => {
   };
   const getarrival = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/getarrival');
+      const response = await axios.get('/getarrival');
       setarrivals(response.data);
     } catch (error) {
       console.error(error);
@@ -74,7 +74,7 @@ const Forms = () => {
         console.log(file1)
         formdata.append("file",file1)
         console.log(formdata);
-        const res=await axios.post("http://localhost:3001/upload",formdata)
+        const res=await axios.post("/upload",formdata)
        
         return res.data
 
@@ -87,7 +87,7 @@ const upload2 =async()=>{
   try{
       const formdata=new FormData();
       formdata.append("file",file2)
-      const res=await axios.post("http://localhost:3001/upload",formdata)
+      const res=await axios.post("/upload",formdata)
       return res.data
 
 
@@ -105,7 +105,7 @@ const upload2 =async()=>{
       alert('Please fill in all fields for Home.');
       return;
     }
-    axios.post('http://localhost:3001/home', {
+    axios.post('/home', {
       heading: home.heading,
       paragraph: home.paragraph,
     })
@@ -130,7 +130,7 @@ const handleFeatureSubmit = async (e) => {
     alert("img is empty")
     return;
   }
-  axios.post('http://localhost:3001/feature', {
+  axios.post('/feature', {
     id:uuid(),
     heading: featureHeading,
     actualPrice: actualPrice,
@@ -164,7 +164,7 @@ const handleFeatureSubmit = async (e) => {
     }
 
 
-    axios.post('http://localhost:3001/arrival', {
+    axios.post('/arrival', {
       id:uuid(),
       heading: arrivalHeading,
       actualPrice: arrivalActualPrice,
@@ -180,7 +180,7 @@ const handleFeatureSubmit = async (e) => {
   };
 
   const handleDeletecategory = (id) => {
-    axios.delete(`http://localhost:3001/deletecategory/${id}`)
+    axios.delete(`/deletecategory/${id}`)
       .then(response => {
         console.log(response.data.message);
         getfeature();

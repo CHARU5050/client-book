@@ -66,7 +66,7 @@ const AdminForm = () => {
     const handlecontactformsubmit= async (e)=>{
         e.preventDefault(); 
         try {
-            const response = await axios.post('http://localhost:3001/updatecontactdetails',formcontactData);
+            const response = await axios.post('/updatecontactdetails',formcontactData);
             setContactData({address:formcontactData.address,gmap:formcontactData.gmap, 
                 pn1: formcontactData.pn1,
                 pn2: formcontactData.pn2,
@@ -84,7 +84,7 @@ const AdminForm = () => {
 
     const getgeneral_settings = async () => {
         try {
-          const response = await axios.get('http://localhost:3001/generalsettings');
+          const response = await axios.get('/generalsettings');
       
           setgeneral_settings({ heading: response.data[0].site_title, paragraph:response.data[0].site_about });
           setshutdown(response.data[0].shutdown);
@@ -94,7 +94,7 @@ const AdminForm = () => {
       };
       const getcontact_details = async () => {
         try {
-          const response = await axios.get('http://localhost:3001/contactdetails');
+          const response = await axios.get('/contactdetails');
           setContactData({address:response.data[0].address,gmap:response.data[0].gmap, 
             pn1: response.data[0].pn1,
             pn2: response.data[0].pn2,
@@ -113,7 +113,7 @@ const AdminForm = () => {
 
       const handleFormSubmit = async () => {
         try {
-          const response = await axios.post('http://localhost:3001/updategeneralsettings',formgeneral_settings);
+          const response = await axios.post('/updategeneralsettings',formgeneral_settings);
           setgeneral_settings({ heading: formgeneral_settings.heading, paragraph: formgeneral_settings.paragraph });
           
         } catch (error) {
@@ -124,7 +124,7 @@ const AdminForm = () => {
       const upshutdown= async(e)=>{
         console.log(e.target.checked);
         try{
-        const res= await axios.post('http://localhost:3001/shutdown',{shutdown:e.target.checked});
+        const res= await axios.post('/shutdown',{shutdown:e.target.checked});
         getgeneral_settings();
         }
         catch(error){

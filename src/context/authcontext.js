@@ -8,23 +8,23 @@ export const AuthcontextProvider=({children})=>{
     
     const login=async(inputs)=>{
         console.log("hello")
-        const res=await axios.post("http://localhost:3001/login",inputs);
+        const res=await axios.post("/login",inputs);
         setcurrentuser(res.data);
 
     }
     const adminlogin=async(inputs)=>{
-        const res=await axios.post("http://localhost:3001/adminlogin",inputs);
+        const res=await axios.post("/adminlogin",inputs);
         setadmindetails(res.data);
 
     }
     const adminlogout=async ()=>{
-        await axios.post("http://localhost:3001/adminlogout");
+        await axios.post("/adminlogout");
         setadmindetails(null)
         console.log(admin_details);
     }
    
     const logout=async ()=>{
-        await axios.post("http://localhost:3001/logout");
+        await axios.post("/logout");
         setcurrentuser(null)
     }
     useEffect(()=>{

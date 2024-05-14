@@ -24,7 +24,7 @@ const Cart = () => {
 
   const getcart = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/getcart/${currentuser.iduser}`);
+      const response = await axios.get(`/getcart/${currentuser.iduser}`);
       setcart(response.data);
     } catch (error) {
       console.error(error);
@@ -34,7 +34,7 @@ const Cart = () => {
 
   const deletecart = (bookid) => {
     const userid = currentuser.iduser;
-    axios.delete(`http://localhost:3001/deletecart/${userid}/${bookid}`)
+    axios.delete(`/deletecart/${userid}/${bookid}`)
       .then(response => {
         console.log("remove successfully");
         getcart();
@@ -50,12 +50,12 @@ const Cart = () => {
     console.log(bookid, newQuantity);
 
     try {
-        const response = await axios.get(`http://localhost:3001/singlebooks/${bookid}`);
+        const response = await axios.get(`/singlebooks/${bookid}`);
         if (response.status === 200) {
             const availableQuantity = response.data[0].quantity; // Assuming 'quantity' is the column name in your 'all_books' table
             if (newQuantity <= availableQuantity) {
                 try {
-                    const updateResponse = await axios.put(`http://localhost:3001/updatecart/${bookid}/${currentuser.iduser}`, { newQuantity });
+                    const updateResponse = await axios.put(`/updatecart/${bookid}/${currentuser.iduser}`, { newQuantity });
                     if (updateResponse.status === 200) {
                         console.log("success");
                     }

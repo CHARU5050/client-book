@@ -16,8 +16,14 @@ import Feebback from './components/pages/Feebback';
 import Payment from './components/pages/Payment';
 import Contact from './components/pages/Contact';
 import ComPayment from './components/pages/ComPayment';
+import axios from 'axios';
 
 import './App.css';
+axios.defaults.baseURL = "https://f5cb-13-51-162-72.ngrok-free.app/";
+axios.defaults.headers = {
+  "Content-Type": "application/json",
+  "ngrok-skip-browser-warning": "69420"
+};
 
 function App() {
   return (

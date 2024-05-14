@@ -13,7 +13,7 @@ const Homes = () => {
 
   const getHomepage = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/gethomepage');
+      const response = await axios.get('/gethomepage');
       setHome(response.data);
     } catch (error) {
       console.error(error);

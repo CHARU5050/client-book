@@ -39,7 +39,7 @@ const Singlepage = () => {
 
   const getbooks = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/singlebooks/${id}`);
+      const response = await axios.get(`/singlebooks/${id}`);
       setbook(response.data);
     } catch (error) {
       console.error(error);
@@ -47,14 +47,14 @@ const Singlepage = () => {
   };
   const getcomments = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/getcomments/${id}`);
+      const response = await axios.get(`/getcomments/${id}`);
       setcomment(response.data);
     } catch (error) {
       console.error(error);
     }
   };
   const deletecomments = (commentId) => {
-    axios.delete(`http://localhost:3001/deletecomments/${commentId}`)
+    axios.delete(`/deletecomments/${commentId}`)
       .then(response => {
        getcomments();
       })
@@ -81,7 +81,7 @@ const Singlepage = () => {
 
     try {
    
-      await axios.post('http://localhost:3001/comments', {
+      await axios.post('/comments', {
         bookid: id,
         userid: currentuser.iduser, 
         ratings: rating,
@@ -100,7 +100,7 @@ const Singlepage = () => {
   const getratings = async () => {
     try {
       if(book.length!=0){
-      const response = await  axios.get(`http://localhost:3001/book/${book[0].book_id}/rating`)
+      const response = await  axios.get(`/book/${book[0].book_id}/rating`)
       const { averageRating, numUsersRated } = response.data;
       setavergeratings(averageRating);
       setusernumber(numUsersRated);
@@ -162,7 +162,7 @@ const addToCart = async (book) => {
       
   }
   try {
-      await axios.post('http://localhost:3001/addtocart', {
+      await axios.post('/addtocart', {
           id:uuid(),
           userid:currentuser.iduser,
           bookid:book.book_id,
@@ -191,7 +191,7 @@ const addToWishlist = async (book) => {
   }
   const userid = currentuser.iduser;
   try {
-      await axios.post("http://localhost:3001/addtowishlist", {
+      await axios.post("/addtowishlist", {
           id:uuid(),
           userid:currentuser.iduser,
           bookid:book.book_id,

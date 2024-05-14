@@ -27,7 +27,7 @@ const AllBooks = () => {
         console.log(file1)
         formdata.append("file",file1)
         console.log(formdata);
-        const res=await axios.post("http://localhost:3001/upload",formdata)
+        const res=await axios.post("/upload",formdata)
        
         return res.data
 
@@ -40,7 +40,7 @@ const AllBooks = () => {
 
   const getallbooks = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/getallbooks');
+      const response = await axios.get('/getallbooks');
       setallbooks(response.data);
     } catch (error) {
       console.error(error);
@@ -62,7 +62,7 @@ const AllBooks = () => {
       alert("img is empty")
       return;
     }
-    axios.post('http://localhost:3001/allbooks', {
+    axios.post('/allbooks', {
       id:uuid(),
       heading: bookheading,
       actualPrice: actualPrice,
@@ -81,7 +81,7 @@ const AllBooks = () => {
 
 
   const handleDeleteallbooks = (id) => {
-    axios.delete(`http://localhost:3001/deleteallbooks/${id}`)
+    axios.delete(`/deleteallbooks/${id}`)
       .then(response => {
         console.log(response.data.message);
         getallbooks();

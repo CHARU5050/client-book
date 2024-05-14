@@ -16,7 +16,7 @@ const Arrivals = () => {
 
   const getArrivals = async () => {
       try {
-          const response = await axios.get('http://localhost:3001/getarrival');
+          const response = await axios.get('/getarrival');
           setArrivals(response.data);
           setLoading(false);
       } catch (error) {

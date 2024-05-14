@@ -17,7 +17,7 @@ const Feebback = () => {
     const handleSubmit = async () => {
       try {
         const userid=currentuser.iduser;
-        await axios.post('http://localhost:3001/feedback', { feedback, rating,userid });
+        await axios.post('/feedback', { feedback, rating,userid });
         alert('Feedback submitted successfully');
       } catch (error) {
         console.error('Error submitting feedback:', error);

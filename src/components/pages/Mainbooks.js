@@ -12,7 +12,7 @@ const Mainbooks = () => {
     },[])
     const getallbooks = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/getallbooks');
+            const response = await axios.get('/getallbooks');
             setbooks(response.data);
             
         } catch (error) {

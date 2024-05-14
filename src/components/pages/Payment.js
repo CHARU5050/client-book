@@ -21,7 +21,7 @@ const Payment = () => {
 
   const getcart = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/getcart/${currentuser.iduser}`);
+      const response = await axios.get(`/getcart/${currentuser.iduser}`);
       setcart(response.data);
       const totalAmount = calculateTotal(response.data);
       settotal(totalAmount);
@@ -49,7 +49,7 @@ const Payment = () => {
         address: address,
         // Add other order details as needed
       };
-      await axios.post('http://localhost:3001/orders', order);
+      await axios.post('/orders', order);
       // Redirect or show success message
       navigate('/paymentSuccesfull');
     } catch (error) {

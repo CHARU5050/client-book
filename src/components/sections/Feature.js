@@ -32,7 +32,7 @@ const Feature = () => {
 
     const getFeature = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/getfeature');
+            const response = await axios.get('/getfeature');
             setFeatures(response.data);
             setLoading(false);
         } catch (error) {
@@ -47,7 +47,7 @@ const Feature = () => {
             
         }
         try {
-            await axios.post('http://localhost:3001/addtocart', {
+            await axios.post('/addtocart', {
                 id:uuid(),
                 userid:currentuser.iduser,
                 bookid:book.book_id,
@@ -75,7 +75,7 @@ const Feature = () => {
         }
         const userid = currentuser.iduser;
         try {
-            await axios.post("http://localhost:3001/addtowishlist", {
+            await axios.post("/addtowishlist", {
                 id:uuid(),
                 userid:currentuser.iduser,
                 bookid:book.book_id,
